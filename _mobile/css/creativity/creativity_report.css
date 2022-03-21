@@ -1,0 +1,69 @@
+.bg_cover {
+	display:none !important;
+}
+#bg_cover2{ display:none !important}
+
+.chart_radar_label {
+	letter-spacing: -0.8px;
+	width: 80%;
+	height: 22.5px;
+	line-height: 22.5px;
+	background: #f0fcfc;
+	margin: 20px auto 25px auto;
+	display: table;
+	border-radius: 10px 0 10px 0;
+	overflow: hidden;
+	font-size: 6px;
+	font-family: 'NotoSansKR', sans-serif;
+}
+.chart_radar_label dt {
+	background: #47c0bb;
+	border-radius: 10px 0 10px 0;
+	color: #fff;
+	width: 36.538461538461538%;
+	font-family: 'NotoSansKR', sans-serif;
+	font-weight: 500;
+	display: table-cell;
+}
+.chart_radar_label dd {
+	display: table-cell;
+	font-weight: 500;
+	position: relative;
+	text-align: left;
+	vertical-align: middle;
+}
+.chart_radar_label dd.user {
+	padding-left: 17.5px;
+}
+.chart_radar_label dd {
+	display: table-cell;
+	font-weight: 500;
+	position: relative;
+	text-align: left;
+	vertical-align: middle;
+}
+.chart_radar_label dd::before {
+	content: '';
+	width: 12.5px;
+	height: 9px;
+	box-sizing: border-box;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 1.5px;
+}
+.chart_radar_label dd.user::before {
+	border: 2.5px solid #a7a7a7;
+}
+.chart_radar_label dd::before {
+	content: '';
+	width: 12.5px;
+	height: 9px;
+	box-sizing: border-box;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 1.5px;
+}
+.chart_radar_label dd.average::before {
+	background: #bee0de;
+	border: 0.5px solid #279792;
+}

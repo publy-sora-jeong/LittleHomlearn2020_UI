@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>리틀홈런</title>
+    <meta
+      name="description"
+      content="아이스크림, 아이스크림 홈런을 탄생시킨 대한민국 No.1 에듀테크그룹에서 만든 5~7세 아이들을 위한 맞춤 놀이 교육 프로그램입니다. 글로벌 미래 인재로의 첫 출발 리틀홈런과 함께하세요"
+    />
+    <meta
+      name="Keywords"
+      content="리틀홈런, 아이스크림, 아이스크림홈런, 창의사고력, 창의적사고력, 학교준비, 5세, 6세, 7세, 
+창의력문제해결프로그램, 창의력문제해결사, 틴포고, 틴포GO, 우리아이미래준비, 놀이교육, homelearn, littlehomelearn, 설렘키트"
+    />
+    <meta
+      content="아이들을 위한 맞춤 놀이 교육 프로그램 리틀홈런"
+      property="og:title"
+    />
+    <meta property="og:image" content="썸네일 이미지 경로" />
+    <meta content="https://www.ㅁㅁㅁ.com/" property="og:url" />
+    <meta
+      content="아이스크림, 아이스크림 홈런을 탄생시킨 대한민국 No.1 에듀테크그룹에서 만든 5~7세 아이들을 위한 맞춤 놀이 교육 프로그램입니다. 글로벌 미래 인재로의 첫 출발 리틀홈런과 함께하세요"
+      property="og:description"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="css/style_new.css" />
+
+    <script>
+      $(function () {
+        if ($(".popup:visible").length == 1) {
+          // 여기영역 팝업 호출할때 넣어주세요
+          $("html, body").css({
+            overflow: "hidden",
+          });
+        } else {
+          // 팝업 닫을때 넣어주세요~!
+          $("html, body").css({
+            overflow: "auto",
+          });
+        }
+
+        $(".btn-close-pop").on("click", function (e) {
+          e.preventDefault();
+          $(".popup").fadeOut(400, function () {
+            $("html, body").css({
+              overflow: "auto",
+            });
+          });
+        });
+
+        //DATEPICKER
+        $("#datepicker").datepicker({
+          dateFormat: "yy년 mm월 dd일",
+        });
+      });
+    </script>
+    <script></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-top">
+        <ul>
+          <li><a class="col-black" href="#">리틀홈런 Home</a></li>
+          <li><a class="col-blue" href="#">회원가입</a></li>
+          <li><a href="#">이벤트</a></li>
+          <li><a href="#">고객센터</a></li>
+        </ul>
+      </div>
+      <div class="GNB">
+        <div class="top_logo">
+          <a href="/"
+            ><img
+              src="https://www.littlehome-learn.com/resources/img_pc/logo.png"
+              alt="리틀홈런 로고"
+          /></a>
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <a
+                href="javascript:setPage('#lhl')"
+                id="lhl_btn"
+                class="gnb_btn active"
+                >리틀홈런</a
+              >
+            </li>
+            <li>
+              <a
+                href="javascript:setPage('#kids')"
+                id="kids_btn"
+                class="gnb_btn"
+                >리틀홈런 for 예비초등</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section class="form-wrapper exp">
+      <h2><b>리틀홈런</b> <b class="col-orange"> 체험 신청 </b></h2>
+      <form action="">
+        <div class="form-input">
+          <div class="formBox">
+            <div class="option-kittype">
+              <ul>
+                <li>
+                  <label class="rdbox">
+                    <input type="radio" name="kit_type" /><strong
+                      >디지털 학습(무료)</strong
+                    >
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="rdbox">
+                    <input type="radio" checked name="kit_type" /><strong
+                      >디지털 학습 + 설렘 Kit(유료)</strong
+                    >
+                    <span class="checkmark"></span>
+                  </label>
+                </li>
+              </ul>
+              <!--신청자녀 선택 수정 2020.07.22-->
+              <div class="choose-child">
+                <h4 class="subtit">신청자녀 선택</h4>
+                <div class="child-list">
+                  <label class="rdbox">
+                    <input type="radio" checked name="chooseChild" /><strong
+                      >오솔레도</strong
+                    >
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="rdbox">
+                    <input type="radio" name="chooseChild" /><strong
+                      >오솔라솔</strong
+                    >
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="rdbox">
+                    <input type="radio" disabled name="chooseChild" /><strong
+                      >오솔시</strong
+                    >
+                    <span class="checkmark"></span>
+                  </label>
+                  <!-- <label class="rdbox">
+								<input type="radio" name="chooseChild"><strong>오솔파</strong>
+								<span class="checkmark"></span>
+							</label> -->
+
+                  <p class="info-disabled">
+                    ※ 학습중, 구독신청이 완료된 자녀는 선택할 수 없습니다.
+                  </p>
+                </div>
+                <a href="#" class="btn-addChild"><span>자녀추가</span></a>
+              </div>
+              <div class="kittype-cnt">
+                <div class="info-text">
+                  <ul class="li-dash">
+                    <li>신청한 자녀만 체험이 가능합니다.</li>
+                    <li>
+                      디지털 학습은 앱스토어에 접속하여 자녀가 체험할
+                      기기(휴대폰 또는 태블릿)에 직접 다운로드해 주셔야 합니다.
+                    </li>
+                    <li>
+                      디지털 학습은 앱에 로그인한 시점으로부터 7일간 제공됩니다.
+                    </li>
+                  </ul>
+                </div>
+
+                <label class="chbox al" for="autoLogin"
+                  >체험 신청에 관한 내용을 확인하였으며 이에 <b>동의합니다.</b>
+                  <span class="col-orange">(필수)</span>
+                  <input type="checkbox" id="autoLogin" />
+                  <span class="checkmark"></span>
+                </label>
+                <a href="#" class="btn-blue btn-apply mt-30">체험 신청 완료</a>
+              </div>
+              <div class="kittype-cnt active">
+                <h4 class="subtit mt-30">배송 주소 입력</h4>
+
+                <a href="#" class="btn-find-address"
+                  ><span>배송지 불러오기</span></a
+                >
+
+                <div class="inputBox">
+                  <input
+                    type="text"
+                    id="address1"
+                    placeholder="기본 주소를 입력하세요."
+                  />
+                </div>
+                <div class="inputBox">
+                  <input
+                    type="text"
+                    id="address2"
+                    placeholder="상세 주소를 입력하세요."
+                  />
+                </div>
+                <div class="inputBox">
+                  <input
+                    type="number"
+                    id="phone"
+                    placeholder="휴대전화번호 ( ‘-’ 제외 숫자만입력)"
+                  />
+                </div>
+                <div class="inputBox">
+                  <input
+                    type="text"
+                    id="deliveryMsg"
+                    placeholder="배송 메세지를 입력하세요."
+                  />
+                </div>
+
+                <label class="chbox al mt-7" for="saveAddress"
+                  >배송지 저장
+                  <input type="checkbox" id="saveAddress" />
+                  <span class="checkmark"></span>
+                </label>
+
+                <div class="info-text">
+                  <ul class="li-dash">
+                    <li>
+                      리틀홈런 체험 Kit는 신용카드(체크카드 포함)로만 결제가
+                      가능합니다.
+                    </li>
+                    <li>신청한 자녀만 체험이 가능합니다.</li>
+                    <li>체험상품은 취소/환불/해지가 불가능합니다.</li>
+                    <li>
+                      설렘 Kit는 배송 출발까지 1~3일 정도 소요될 수 있습니다.
+                      조금만 기다려 주세요.
+                    </li>
+                    <li>
+                      설렘 Kit는 입력하신 주소로 배송되며, 주소 미기재 및 주소
+                      오류로 배송이 되지 않거나 오배송 될 수 있으니 배송지를
+                      한번 더 확인해 주세요.
+                    </li>
+                    <li>
+                      디지털 학습은 체험할 기기(휴대폰 또는 태블릿)에서 직접
+                      다운로드해 주세요.
+                    </li>
+                    <li>
+                      디지털 학습은 앱에 로그인한 시점으로부터 7일간 이용하실 수
+                      있습니다.
+                    </li>
+                  </ul>
+                </div>
+
+                <label class="chbox al" for="agree_term1"
+                  >체험 신청에 관한 내용을 확인하였으며 이에
+                  <strong>동의합니다.</strong>
+                  <span class="col-orange">(필수)</span>
+                  <input type="checkbox" id="agree_term1" />
+                  <span class="checkmark"></span>
+                </label>
+
+                <a href="#" class="btn-blue btn-comfirm mt-30"
+                  >결제 하러 가기</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!--자녀추가 -->
+      <div class="popup popup--addChild" style="display: none;">
+        <div class="popup-container">
+          <div class="formBox">
+            <h3>자녀추가</h3>
+            <div class="inputBox">
+              <input type="text" id="id" placeholder="자녀이름" />
+            </div>
+            <div class="inputBox-two">
+              <div class="inputBox">
+                <label class="rdbox">
+                  <input type="radio" checked name="gender" /><strong
+                    >성별 (여아)</strong
+                  >
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="inputBox">
+                <label class="rdbox">
+                  <input type="radio" name="gender" /><strong
+                    >성별 (남아)</strong
+                  >
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+            <!-- <div class="inputBox-selectymd">
+						<div class="inputBox selectBox selectResize">
+							<select onmousedown="if(this.options.length>8){this.size=8; this.style.height ='auto'; }"
+								onchange='this.size=0;' onblur="this.size=0; ">
+								<option value="">출생년도</option>
+								<option value="2000">2000</option>
+								<option value="2001">2001</option>
+								<option value="2001">2002</option>
+								<option value="2001">2003</option>
+								<option value="2001">2004</option>
+								<option value="2001">2005</option>
+								<option value="2001">2006</option>
+								<option value="2001">2007</option>
+								<option value="2001">2008</option>
+								<option value="2001">2009</option>
+								<option value="2001">2010</option>
+								<option value="2001">2011</option>
+								<option value="2001">2012</option>
+								<option value="2001">2013</option>
+							</select>
+						</div>
+						<div class="inputBox selectBox  selectResize">
+							<select onmousedown="if(this.options.length>8){this.size=8; this.style.height ='auto'; }"
+								onchange='this.size=0;' onblur="this.size=0; ">
+								<option value="">월</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+							</select>
+						</div>
+						<div class="inputBox selectBox selectResize  ">
+							<select onmousedown="if(this.options.length>8){this.size=8; this.style.height ='auto'; }"
+								onchange='this.size=0;' onblur="this.size=0; this.style.height==50;">
+								<option value="">일</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+								<option value="19">19</option>
+								<option value="20">20</option>
+								<option value="21">21</option>
+								<option value="22">22</option>
+								<option value="23">23</option>
+								<option value="24">24</option>
+								<option value="25">25</option>
+								<option value="26">26</option>
+								<option value="27">27</option>
+								<option value="28">28</option>
+								<option value="29">29</option>
+								<option value="30">30</option>
+								<option value="31">31</option>
+							</select>
+						</div>
+					</div> -->
+
+            <div class="inputBox">
+              <input type="text" id="datepicker" placeholder="출생년도" />
+            </div>
+            <div class="inputBox selectBox selectRel">
+              <select id="selectRelType">
+                <option value="">관계선택</option>
+                <option value="">모</option>
+                <option value="">부</option>
+                <option value="">기타</option>
+              </select>
+            </div>
+            <!-- 위 관계선택에서 기타 선택시 아래 inputbox  활성화 -->
+            <div class="inputBox">
+              <input type="text" id="rel_extra" placeholder="관계입력" />
+            </div>
+          </div>
+          <a href="#" class="btn-blue btn-comfirm mt-30">확인</a>
+          <a href="#" class="btn-close-pop"><span class="blind">닫기</span></a>
+        </div>
+      </div>
+
+      <!--체험신청완료 ( 디지털학습만 : 무료)  -->
+      <div class="popup popup--completeExp" style="display: none;">
+        <div class="popup-container">
+          <h2 class="complete">
+            리틀홈런 체험 신청이<br /><b>완료되었습니다.</b>
+          </h2>
+          <div class="tb-result">
+            <table>
+              <colgroup>
+                <col width="120" />
+              </colgroup>
+              <tbody>
+                <tr>
+                  <th class="nb-t">학습 자녀</th>
+                  <td class="nb-t">오솔민</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="info-detail">
+            신청내역은 모바일 홈페이지에서 확인하실 수 있습니다.
+          </p>
+          <a href="#" class="btn-blue btn-comfirm">신청 내역 확인</a>
+
+          <div class="info-text">
+            <p class="app">
+              <img
+                src="img/ltl_app.png"
+                alt="잠깐!체험을 시작하기 전에 자녀가 학습할 기기에서 먼저 App을 다운로드 해주세요. "
+              />
+            </p>
+            <ul>
+              <li>* 안드로이드 환경에서만 App이 검색이 됩니다.</li>
+              <li>* 안드로이드 6.0 (마시멜로) 이상에서 이용이 가능합니다.</li>
+              <li>
+                * 반드시 자녀가 학습할 기기에서 검색 및 다운로드해 주시기
+                바랍니다.
+              </li>
+            </ul>
+          </div>
+          <a href="#" class="btn-close-pop"><span class="blind">닫기</span></a>
+        </div>
+      </div>
+
+      <!--체험신청완료 ( 디지털 학습 + 설렘 Kit  : 유료)  -->
+      <div class="popup popup--completeExp-paid" style="display: none;">
+        <div class="popup-container">
+          <h2 class="complete">리틀홈런 체험 신청이<b> 완료되었습니다.</b></h2>
+
+          <div class="col">
+            <div class="col--left">
+              <div class="tb-result">
+                <table>
+                  <colgroup>
+                    <col width="120" />
+                  </colgroup>
+                  <tbody>
+                    <tr>
+                      <th class="nb-t">결제일자</th>
+                      <td class="nb-t">2019.10.07 (수)</td>
+                    </tr>
+                    <tr>
+                      <th>결제수단</th>
+                      <td>KB국민카드 (****-****-****-4215)</td>
+                    </tr>
+                    <tr>
+                      <th>결제금액</th>
+                      <td>10,000원</td>
+                    </tr>
+                    <tr>
+                      <th>학습자녀</th>
+                      <td>오솔민</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="info-detail">
+                신청내역은 모바일 홈페이지에서 확인하실 수 있습니다.
+              </p>
+              <a href="#" class="btn-blue btn-comfirm">신청 내역 확인</a>
+            </div>
+
+            <div class="col--right info-text">
+              <p class="app">
+                <img
+                  src="img/ltl_app.png"
+                  alt="잠깐!체험을 시작하기 전에 자녀가 학습할 기기에서 먼저 App을 다운로드 해주세요. "
+                />
+              </p>
+              <ul>
+                <li>* 안드로이드 환경에서만 App이 검색이 됩니다.</li>
+                <li>* 안드로이드 6.0 (마시멜로) 이상에서 이용이 가능합니다.</li>
+                <li>
+                  * 반드시 자녀가 학습할 기기에서 검색 및 다운로드해 주시기
+                  바랍니다.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <a href="#" class="btn-close-pop"><span class="blind">닫기</span></a>
+        </div>
+      </div>
+
+      <!--배송지관리-->
+      <div class="popup popup--address" style="display: block;">
+        <div class="popup-container">
+          <div class="formBox">
+            <h3>배송지 관리</h3>
+
+            <div class="address-list">
+              <div class="item">
+                <strong>우리집</strong>
+                <p class="addr1">(12345) 경기도 성남시 대왕판교로 660</p>
+                <p class="addr2">유스페이스 1B 604호</p>
+                <p class="addr3">송진선 / 01012341234</p>
+                <a href="#" class="btn-blue btn-sel">선택</a>
+              </div>
+              <div class="item">
+                <strong>회사</strong>
+                <p class="addr1">(12345) 경기도 성남시 대왕판교로 660</p>
+                <p class="addr2">유스페이스 1B 604호</p>
+                <p class="addr3">송진선 / 01012341234</p>
+                <a href="#" class="btn-blue btn-sel">선택</a>
+              </div>
+              <div class="item">
+                <strong>간장공장공장장네집</strong>
+                <p class="addr1">(12345) 경기도 성남시 대왕판교로 660</p>
+                <p class="addr2">유스페이스 1B 604호</p>
+                <p class="addr3">송진선 / 01012341234</p>
+                <a href="#" class="btn-blue btn-sel">선택</a>
+              </div>
+              <div class="item">
+                <strong>간장공장공장장네집</strong>
+                <p class="addr1">(12345) 경기도 성남시 대왕판교로 660</p>
+                <p class="addr2">유스페이스 1B 604호</p>
+                <p class="addr3">송진선 / 01012341234</p>
+                <a href="#" class="btn-blue btn-sel">선택</a>
+              </div>
+              <div class="item">
+                <strong>간장공장공장장네집</strong>
+                <p class="addr1">(12345) 경기도 성남시 대왕판교로 660</p>
+                <p class="addr2">유스페이스 1B 604호</p>
+                <p class="addr3">송진선 / 01012341234</p>
+                <a href="#" class="btn-blue btn-sel">선택</a>
+              </div>
+              <div class="item">
+                <strong>간장공장공장장네집</strong>
+                <p class="addr1">(12345) 경기도 성남시 대왕판교로 660</p>
+                <p class="addr2">유스페이스 1B 604호</p>
+                <p class="addr3">송진선 / 01012341234</p>
+                <a href="#" class="btn-blue btn-sel">선택</a>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="btn-close-pop"><span class="blind">닫기</span></a>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <article class="con_area address">
+        <ul class="policy">
+          <li><a href="#">회사소개</a></li>
+          <li><a href="#">이용약관</a></li>
+          <li><a href="#">개인정보처리방침</a></li>
+        </ul>
+        주) 피디엠 l 대표이사 : 박대민 l 사업자등록번호 : 543-81-00753 <br />
+        주소 : 경기도 성남시 분당구 대왕판교로 660(삼평동) l 통신판매업신고번호
+        : 제 2017-성남분당-0668 호 <br />
+        고객센터 : 1544-0690 (평일 10:00~19:00 주말/공휴일 휴무)
+        <p class="copyrights">
+          Copyright ⓒ PDM Inc. All Rights Reserved
+        </p>
+      </article>
+    </footer>
+  </body>
+</html>

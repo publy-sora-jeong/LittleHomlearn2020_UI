@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>리틀홈런 </title>
+	<meta name="description"
+		content="아이스크림, 아이스크림 홈런을 탄생시킨 대한민국 No.1 에듀테크그룹에서 만든 5~7세 아이들을 위한 맞춤 놀이 교육 프로그램입니다. 글로벌 미래 인재로의 첫 출발 리틀홈런과 함께하세요">
+	<meta name="Keywords" content="리틀홈런, 아이스크림, 아이스크림홈런, 창의사고력, 창의적사고력, 학교준비, 5세, 6세, 7세, 
+창의력문제해결프로그램, 창의력문제해결사, 틴포고, 틴포GO, 우리아이미래준비, 놀이교육, homelearn, littlehomelearn, 설렘키트">
+	<meta content="아이들을 위한 맞춤 놀이 교육 프로그램 리틀홈런" property="og:title">
+	<meta property="og:image" content="썸네일 이미지 경로" />
+	<meta content="https://www.ㅁㅁㅁ.com/" property="og:url">
+	<meta
+		content="아이스크림, 아이스크림 홈런을 탄생시킨 대한민국 No.1 에듀테크그룹에서 만든 5~7세 아이들을 위한 맞춤 놀이 교육 프로그램입니다. 글로벌 미래 인재로의 첫 출발 리틀홈런과 함께하세요"
+		property="og:description">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+	<script src="js/swiper.min.js"></script>
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/style_new.css">
+	<link rel="stylesheet" href="css/w_style.css">
+</head>
+
+<body>
+	<header>
+		<div class="header-top">
+			<ul>
+				<li><a class="col-black" href="#">리틀홈런 Home</a></li>
+				<li><a class="col-blue" href="#">회원가입</a></li>
+				<li><a href="#">이벤트</a></li>
+				<li><a href="#">고객센터</a></li>
+			</ul>
+		</div>
+		<div class="GNB ">
+			<div class="top_logo"><a href="/"><img src="https://www.littlehome-learn.com/resources/img_pc/logo.png"
+						alt="리틀홈런 로고"></a></div>
+			<nav>
+				<ul>
+					<li><a href="javascript:setPage('#lhl')" id="lhl_btn" class="gnb_btn active">리틀홈런</a></li>
+					<li><a href="javascript:setPage('#kids')" id="kids_btn" class="gnb_btn">리틀홈런 for 예비초등</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<section class="form-wrapper exp">
+		<h2><b>리틀홈런</b> <b class="col-orange"> 정기구독 신청</b></h2>
+		<form action="">
+			<div class="form-input">
+				<div class="subscribe-progress">
+					<span class="current"><i class="blind">1단계</i></span>
+					<span><i class="blind">2단계</i></span>
+					<span><i class="blind">3단계</i></span>
+				</div>
+				<div class="formBox">
+
+					<div class="select-subscribe-option ">
+						<div class="inputBox selectBox">
+							<select id="subs_option">
+								<option value="">12주 구독 (학습기 포함)</option>
+								<option value="">NN주 구독 (학습기 포함)</option>
+								<option value="">NN주 구독</option>
+							</select>
+						</div>
+						<div class="option-price">
+							월(4주) <strong>79,000원</strong>
+						</div>
+					</div>
+					<div class="inputBox selectBox selectApplyChild">
+						<select id="selectApplyChild">
+							<option value="">신청자녀선택</option>
+							<option value="김자녀">김자녀</option>
+							<option value="이자녀">이자녀</option>
+							<option value="박자녀">박자녀</option>
+							<option value="최자녀">최자녀</option>
+						</select>
+						<a href="#" class="btn-addChild"><span>자녀추가</span></a>
+					</div>
+
+
+					<div class="inputBox selectBox">
+						<select id="subs_option">
+							<option value="">학습 시작일 </option>
+							<option value="">2020-08-01-sample</option>
+							<option value="">2020-08-01-sample</option>
+						</select>
+					</div>
+
+					<div class="subscribe-delivery">
+						<h4 class="subtit mt-30">배송 주소 입력</h4>
+
+						<a href="#" class="btn-find-address"><span>배송지 불러오기</span></a>
+
+						<div class="inputBox">
+							<input type="text" id="address1" placeholder="기본 주소를 입력하세요.">
+						</div>
+						<div class="inputBox">
+							<input type="text" id="address2" placeholder="상세 주소를 입력하세요.">
+						</div>
+						<div class="inputBox">
+							<input type="number" id="phone" placeholder="휴대전화번호 ( ‘-’ 제외 숫자만입력)">
+						</div>
+						<div class="inputBox">
+							<input type="text" id="deliveryMsg" placeholder="배송 메세지를 입력하세요.">
+						</div>
+						<label class="chbox al mt-7" for="saveAddress">배송지 저장
+							<input type="checkbox" id="saveAddress">
+							<span class="checkmark"></span>
+						</label>
+					</div>
+					<a href="#" class="btn-blue btn-comfirm mt-30">다음</a>
+				</div>
+			</div>
+		</form>
+
+
+		<script>
+			$('.btn-close-pop').on('click', function (e) {
+				e.preventDefault();
+				$('.popup').fadeOut();
+			});
+		</script>
+	</section>
+	<footer>
+		<article class="con_area address">
+			<ul class="policy">
+				<li><a href="#">회사소개</a></li>
+				<li><a href="#">이용약관</a></li>
+				<li><a href="#">개인정보처리방침</a></li>
+			</ul>
+			주) 피디엠 l 대표이사 : 박대민 l 사업자등록번호 : 543-81-00753 <br>
+			주소 : 경기도 성남시 분당구 대왕판교로 660(삼평동) l 통신판매업신고번호 : 제 2017-성남분당-0668 호 <br>
+			고객센터 : 1544-0690 (평일 10:00~19:00 주말/공휴일 휴무)
+			<p class="copyrights">
+				Copyright ⓒ PDM Inc. All Rights Reserved
+			</p>
+		</article>
+	</footer>
+</body>
+
+</html>

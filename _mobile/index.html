@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=no" />
+  <script src="resources/js/jquery.min.js"></script>
+  <script src="resources/js/swiper.min.js"></script>
+  <script src="resources/js/main/tinfogo_main.js"></script>
+  <script src="resources/js/index.js"></script>
+  <link rel="shortcut icon" href="img/favicon_64.ico" />
+  <link rel="stylesheet" href="css/swiper.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <title>Little HOME LEARN</title>
+
+  <style>
+    body {
+      background-color: #fff;
+    }
+  </style>
+
+  <script>
+    var isLogin = false;
+    $(function () {
+      $("#topBtn").click(function () {
+        $("html, body").animate({
+            scrollTop: 0,
+          },
+          400
+        );
+        return false;
+      });
+    });
+
+    $(function () {
+      var posSection04, posSection05;
+      posSection04 = parseInt($(".lhl_section04").offset().top);
+      posSection05 = posSection04 + $(".lhl_section04").height();
+
+      var menu = ["리틀홈런", "예비초등"];
+      var swiper_main = new Swiper(".swiper_main", {
+        direction: "horizontal",
+        slidesPerView: 1, //화면에 보여질 슬라이드 갯수
+        spaceBetween: 0, // 슬라이드 사이의 간격 px 단위
+        autoHeight: true,
+        observer: true,
+        simulateTouch: true,
+        noSwipingClass: "swiper-no-swiping",
+        autoplayDisableOnInteraction: false,
+
+        pagination: {
+          el: ".swiper_main .menu_main",
+          clickable: true,
+          renderBullet: function (index, className) {
+            return (
+              '<p class="' +
+              className +
+              '"><span>' +
+              menu[index] +
+              "</span></p>"
+            );
+          },
+        },
+        on: {
+          init: function () {
+            var act = this.activeIndex;
+            menuFix(act);
+            $(".sticky--lhl").css({
+              display: "block",
+            });
+          },
+          slideChange: function () {
+            var act = this.activeIndex;
+            menuFix(act);
+
+            if (act == 0) {
+              $(".sticky--lhl").css({
+                display: "block",
+              });
+              $(".sticky--elementary").css({
+                display: "none",
+              });
+            } else if (act == 1) {
+              $(".sticky--lhl").css({
+                display: "none",
+              });
+              $(".sticky--elementary").css({
+                display: "block",
+              });
+            }
+          },
+        },
+      });
+
+      $(window).on("scroll", function () {
+
+        if (
+          $(window).innerHeight() + $(window).scrollTop() >=
+          $("body").height() - 1
+        ) {
+
+          $(".bottom_banner").addClass("show");
+        } else {
+          $(".bottom_banner").removeClass("show");
+        }
+
+        var scrolling = $(window).scrollTop();
+
+        if (scrolling >= posSection04 - 80 && scrolling < posSection05) {
+          $(".menuBox").addClass("fix");
+        } else {
+          $(".menuBox").removeClass("fix");
+        }
+      });
+
+      function menuFix(act) {
+        $("html").scrollTop(0);
+        if (act == 0) {
+          $(".menuBox").removeClass("hide");
+        } else {
+          $(".menuBox").addClass("hide");
+        }
+      }
+      var lhl_section_04_menu = [
+        "리틀홈런",
+        "틴포GO",
+        "차곡차곡 공부습관",
+        "리틀 유치원",
+        "리틀 도서관",
+      ];
+
+      ////SECTIO 02
+      var lhl_section_02_swiper = new Swiper(".lhl_section_02_swiper", {
+        direction: "horizontal",
+        autoHeight: true,
+        pagination: {
+          el: ".swiper-pagination",
+          type: "bullets",
+          clickable: true,
+        },
+      });
+
+      // Section03 메뉴 스크롤
+      var arrMenuBox = [];
+      var lhl_section_04_swiper = new Swiper(".lhl_section_04_swiper", {
+        direction: "horizontal",
+        slidesPerView: 1, //화면에 보여질 슬라이드 갯수
+        //spaceBetween: 20, // 슬라이드 사이의 간격 px 단위
+        autoHeight: true,
+        observer: true,
+        simulateTouch: true,
+        centeredSlides: true,
+        noSwipingClass: "swiper-no-swiping",
+        autoplayDisableOnInteraction: false,
+        on: {
+          slideChange: function () {
+            //console.log("changed");
+
+            var slide_index = lhl_section_04_swiper.activeIndex;
+            $(".menuBox").stop().animate({
+                scrollLeft: arrMenuBox[slide_index],
+              },
+              500
+            );
+
+            $("html, body")
+              .stop()
+              .animate({
+                scrollTop: posSection04 - 60,
+              });
+
+            //임시  section04 슬라이드 이동시 메인wrapper 높이짤림
+            setTimeout(() => {
+              var wrapHeight = $(
+                ".swiper_main .swiper-wrapper .slide_01"
+              ).height();
+              $(".swiper_main > .swiper-wrapper").height(wrapHeight);
+
+              posSection04 = parseInt($(".lhl_section04").offset().top);
+              posSection05 = posSection04 + $(".lhl_section04").height();
+            }, 300);
+          },
+        },
+        //initialSlide: 3, // test
+        pagination: {
+          el: ".menuBox",
+          clickable: true,
+          renderBullet: function (index, className) {
+            return (
+              '<p class="' +
+              className +
+              '"><span>' +
+              lhl_section_04_menu[index] +
+              "</span></p>"
+            );
+          },
+        },
+      });
+
+      for (var m = 0; m < $(".menuBox p").length; m++) {
+        arrMenuBox.push($(".menuBox p").eq(m).offset().left);
+      }
+
+      //section05
+      var lhl_section_05_swiper = new Swiper(".lhl_section_05_swiper", {
+        direction: "horizontal",
+        slidesPerView: 1.2, //화면에 보여질 슬라이드 갯수
+        spaceBetween: 15, // 슬라이드 사이의 간격 px 단위
+        simulateTouch: true,
+        loop: false,
+        autoHeight: true,
+        centeredSlides: true,
+        autoHeight: true,
+      });
+
+      //lhl-products-slider
+      var lhl_products_slider = new Swiper(".lhl-products-slider", {
+        direction: "horizontal",
+        slidesPerView: 2.2, //화면에 보여질 슬라이드 갯수
+        spaceBetween: 10, // 슬라이드 사이의 간격 px 단위
+        simulateTouch: true,
+        loop: false,
+        centeredSlides: false,
+        autoHeight: true,
+      });
+
+      $(".menuBox p").on("click", function () {
+        var menubox_index = $(this).index();
+
+        $(".menuBox").stop().animate({
+            scrollLeft: arrMenuBox[menubox_index],
+          },
+          500
+        );
+        $("html, body")
+          .stop()
+          .animate({
+            scrollTop: posSection04 + 50,
+          });
+      });
+
+      ////////////
+      $(".xBtn").click(function (e) {
+        $(".popup_page").hide();
+      });
+
+      var tinfo_sub02_slider = new Swiper(".tinfo_sub02_slider", {
+        direction: "horizontal",
+        slidesPerView: 1.25, //화면에 보여질 슬라이드 갯수
+        spaceBetween: 20, // 슬라이드 사이의 간격 px 단위
+        simulateTouch: true,
+        loop: false,
+        centeredSlides: true,
+        autoHeight: true,
+      });
+
+      $(window).scroll(function (e) {
+        var scrolling = $(this).scrollTop();
+
+        posSection04 = parseInt($(".lhl_section04").offset().top);
+        posSection05 = posSection04 + $(".lhl_section04").height();
+
+        if ($(window).scrollTop() > 300) {
+          $("#topBtn").fadeIn();
+        } else {
+          $("#topBtn").fadeOut();
+        }
+
+        if ($(window).scrollTop() > 58) {
+          $(".swiper_main").addClass("fixed");
+        } else {
+          $(".swiper_main").removeClass("fixed");
+        }
+      });
+
+      ////////
+    });
+  </script>
+</head>
+
+<body>
+  <a href="javascript:;" id="topBtn" style="display: block;"><img src="resources/img/topBtn.png" /></a>
+
+  <a href="javascript:;" id="topBtn"><img src="img/topBtn.png?1" /></a>
+  <div id="bg_cover" class="bg_cover" style="display: none;"></div>
+  <div id="bg_cover2" class="bg_cover" style="display: none;"></div>
+  <div id="bg_cover3" class="bottom_banner "></div>
+
+  <div id="wraper">
+    <div class="menuBox">
+      <ul>
+        <li class="active"><a href="#">리틀홈런</a></li>
+        <li><a href="#">틴포GO</a></li>
+        <li><a href="#">차곡차곡 공부습관</a></li>
+        <li><a href="#">리틀 유치원</a></li>
+        <li><a href="#">리틀 도서관</a></li>
+      </ul>
+    </div>
+
+    <script></script>
+
+    <nav>
+      <div class="logoBox">
+        <img src="img/logo_color.png" class="logo" />
+        <a href="javascript:nav_close();" class="nav_close"><img src="img/btn_close_gray.svg" /></a>
+      </div>
+      <div class="login_state">
+        <!-- 로그인 전 
+        <span class="before">로그인하세요.</span>-->
+
+        <!-- 로그인 후 -->
+        <span class="after">
+          <font color="#fff100">진선 어머님</font> 반가워요!
+        </span>
+      </div>
+      <ul class="nav_list">
+        <li>
+          <a href="javascript:;" class="nav01"><img src="resources/img/icon_nav_01_color.png" />
+            <span>리틀홈런</span></a>
+        </li>
+        <li>
+          <a href="javascript:;" class="nav02"><img src="resources/img/icon_nav_08_color.png" />
+            <span>리틀홈런 예비초등</span></a>
+        </li>
+        <li>
+          <a href="javascript:;" class="nav03"><img src="img/icon_nav_04.png" /> <span>자녀 학습관리</span></a>
+        </li>
+        <li>
+          <a href="mypage_main.php"><img src="img/icon_nav_05.png" /> <span>마이페이지</span></a>
+        </li>
+        <li>
+          <a href="event_list.php"><img src="img/icon_nav_06.png" /> <span>이벤트</span></a>
+        </li>
+        <li>
+          <a href="customer_center.php"><img src="img/icon_nav_07.png" /> <span>고객센터</span></a>
+        </li>
+      </ul>
+      <div class="bottomBox">
+        <!-- 로그인 전 
+        <a href="" class="login">로그인</a>-->
+
+        <!-- 로그인 후 -->
+        <div class="after">
+          <a href="">로그아웃</a>
+          <a href="mypage_05.php">회원정보수정</a>
+        </div>
+      </div>
+    </nav>
+    <div class="nav_bg" style="display: none;"></div>
+
+    <header>
+      <a href="javascript:;" class="menu_toggle"><img src="resources/img/icon_menu.svg" /></a>
+      <a href="/" class="logo"><img src="resources/img/logo.png" /></a>
+      <a href="javascript:linkNeedLogin('/mypage/main');" class="my_btn"><img src="resources/img/icon_my.png" /></a>
+    </header>
+
+    <div class="mainArea">
+      <div class="swiper-container swiper_main">
+        <div class="menu_main"></div>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide slide_01">
+            <div class="lhl_main">
+              <div class="visual">
+                <img src="resources/img/lhl_visual.jpg" />
+              </div>
+              <section class="lhl_section01">
+                <img src="resources/img/lhl_section_01.jpg" />
+              </section>
+
+              <!--S02-->
+              <section class="lhl_section02">
+                <div class="swiper-container lhl_section_02_swiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <img src="resources/img/lhl_section_02_slide01.jpg"
+                        alt="미래 우리 아이들에게 가장 중요한 능력은 문제를 스스로 발견하고 해결하며 함께 소통하고 공감하는 능력입니다. - 다보스포럼, 포브스 외 - " />
+                    </div>
+                    <div class="swiper-slide">
+                      <img src="resources/img/lhl_section_02_slide02.jpg"
+                        alt="앞으로는 우리 아이들이 빠르게 변화는 시대에 대처할 수 있게 해줘야 합니다. 미래의 아이들은 적응력과 유연성이 필요합니다. - pf. 로베르타 골린코프 외 - " />
+                    </div>
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+              </section>
+
+              <section class="lhl_section03">
+                <img src="resources/img/lhl_section_03.jpg" />
+                <img src="resources/img/lhl_section_04.jpg" alt="유아에 딱 맞춘 5가지 영역의 특별하고, 풍성한 디지털학습" />
+              </section>
+
+              <section class="lhl_section04">
+                <div class="lhl_section_04_swiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-slide01">
+                      <div class="app-view">
+                        <img src="resources/img/lhl_section_04_tablet01.png" alt="tablet" />
+                        <p>
+                          <strong>생각습관을 길러주는 창의력, 영어 프로그램부터
+                            <br />
+                            공부 / 생활 / 독서습관까지</strong>
+                          유아에 딱 맞게 구성한 5가지 영역
+                        </p>
+                      </div>
+                      <div class="app-desc app-desc--lhl">
+                        <div class="item">
+                          <p class="ico">
+                            <img src="resources/img/lhl_section_04_logo01.png" alt="" />
+                          </p>
+                          <div>
+                            <p class="item-tit col-blue">01. 창의력</p>
+                            <p>
+                              끊임없는 도전과 새로운 발상, <br />
+                              창의적 문제해결 경험으로
+                              <b>특별한 창의력 Upgrade!</b>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="item">
+                          <p class="ico">
+                            <img src="resources/img/lhl_section_04_logo02.png" alt="" />
+                          </p>
+                          <div>
+                            <p class="item-tit col-orange">
+                              02. 영어
+                              <span class="comming">2020년 하반기 출시 예정</span>
+                            </p>
+                            <p>
+                              스토리텔링 미션을 수행하며 <br />
+                              <b>언어와 문화를 함께 배우는 특별한 영어</b>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="item">
+                          <p class="ico">
+                            <img src="resources/img/lhl_section_04_logo03.png" alt="" />
+                          </p>
+                          <div>
+                            <p class="item-tit col-green">03. 공부습관</p>
+                            <p>
+                              한글, 수학, 과학까지<br />
+                              <b>스스로 생각하면서 필수 지식 쌓기!</b>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="item">
+                          <p class="ico">
+                            <img src="resources/img/lhl_section_04_logo04.png" alt="" />
+                          </p>
+                          <div>
+                            <p class="item-tit col-yellow">04. 생활습관</p>
+                            <p>
+                              누리놀이에서 엄선한 놀이 콘텐츠로 <br />
+                              <b>놀이하며 성장하는 우리 아이를 위한 특별한
+                                유치원
+                              </b>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="item">
+                          <p class="ico">
+                            <img src="resources/img/lhl_section_04_logo05.png" alt="" />
+                          </p>
+                          <div>
+                            <p class="item-tit col-purple">05. 독서습관</p>
+                            <p>
+                              책 읽는 즐거움에 독서 습관을 더한<br />
+                              <b>리틀홈런만의 도서관</b>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide swiper-slide02">
+                      <div class="app-view">
+                        <img src="resources/img/lhl_section_04_tablet02.png" alt="tablet" />
+                        <p>
+                          <strong>끊임없는 도전과 새로운 발상 <br />
+                            창의적 문제해결 경험을 제공하는</strong>
+                          특별한 창의력 프로그램
+                        </p>
+                      </div>
+                      <div class="app-desc app-desc--tinfo">
+                        <div class="tinfo_point_01">
+                          <img src="resources/img/lhl_section_04_2_point1.png" alt="POINT1" />
+                          <p class="point-text">
+                            <span class="light">특별한 창의력을 키우는</span>
+                            <span class="bold">틴포GO만의</span>
+                            <span class="bold col-sky">6가지 창의적 학습 경험</span>
+                          </p>
+                          <img src="resources/img/lhl_section_04_2_01.png"
+                            alt="몰입을 통한 도전 , 실행을 통한 학습, 만들기를 통한 학습, 소통과 공감, 진단을 통한 메타인지, 분석과 처방" />
+                        </div>
+                        <div class="tinfo_point_02">
+                          <img src="resources/img/lhl_section_04_2_point2.png" alt="POINT2" />
+                          <p class="point-text">
+                            <span class="sml">옆집 아이와 똑같은 학습은 이제 그만!</span>
+                            <span class="light">우리 아이의</span>
+                            <span class="bold">잠재력과 관심사에 맞춰</span>
+                            <span class="bold col-pink">52주간의 학습 커리큘럼 제공</span>
+                          </p>
+                          <img src="resources/img/lhl_section_04_2_02.png" alt="분석단계(12주) + 맞춤단계(40주)" />
+
+                          <a href="#" class="app-link">
+                            <img src="resources/img/lhl_section_04_app_01.png"
+                              alt="창의력발달검사 -  잠재된 창의력을 발견하고 측정하여  우리 아이의 창의력 향상을 위한최적의 가이드 제시" />
+                          </a>
+                          <a href="#" class="app-link">
+                            <img src="resources/img/lhl_section_04_app_02.png"
+                              alt="창의력 애니메이션 틴포 - 글로벌 크리에이티브 그룹과 함께하는 창의력 애니메이션 틴포! 끊임없는 도전과 새로운 발상, 창의적 문제해결 경험!" />
+                          </a>
+                          <a href="#" class="app-link">
+                            <img src="resources/img/lhl_section_04_app_03.png"
+                              alt="창의력 문제해결 트레이닝 - Learning By Doing! 생각놀이-호기심놀이- 이야기놀이-표현놀이로 이어지는 4단계의 디지털 활동을 통해 창의적 생각습관" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide swiper-slide03">
+                      <div class="app-view">
+                        <img src="resources/img/lhl_section_04_tablet03.png" alt="tablet" />
+                        <p>
+                          한글, 수학, 과학까지
+                          <strong>스스로 생각하면서 필수 지식 쌓기!</strong>
+                        </p>
+                      </div>
+                      <div class="app-desc app-desc--habit">
+                        <img src="resources/img/lhl_section_04_3_01.png" alt="" />
+                      </div>
+                    </div>
+                    <div class="swiper-slide swiper-slide04">
+                      <div class="app-view">
+                        <img src="resources/img/lhl_section_04_tablet04.png" alt="tablet" />
+                        <p>
+                          동요부터 생활습관까지 <br />
+                          누리놀이에서 엄선한 놀이 콘텐츠로
+                          <strong>집에서도 유치원처럼 매일매일 즐겁게!</strong>
+                        </p>
+                      </div>
+                      <div class="app-desc app-desc--kinder">
+                        <img src="resources/img/lhl_section_04_4_01.png" alt="" />
+                      </div>
+                    </div>
+                    <div class="swiper-slide swiper-slide05">
+                      <div class="app-view">
+                        <img src="resources/img/lhl_section_04_tablet05.png" alt="tablet" />
+                        <p>
+                          언제, 어디에서나 펼쳐지는 나만의 도서관으로
+                          <strong>스스로 즐겁게 읽고 상상하는 습관 형성</strong>
+                        </p>
+                      </div>
+                      <div class="app-desc app-desc--lib">
+                        <img src="resources/img/lhl_section_04_5_01.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="lhl_section05">
+                <img src="resources/img/lhl_section_05.png" alt="매주 배송되는 설렘 Kit로 즐기는 메이커 활동 " />
+
+                <div class="lhl_section_05_swiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-slide01">
+                      <div class="kit kit--01">
+                        <div class="kit-img">
+                          <img src="resources/img/lhl_section_05_kit_01.png" alt="" />
+                        </div>
+                        <h4>문제해결력 쑥쑥! <b>생각놀이 Kit</b></h4>
+                        <p>
+                          문제를 발견하고 나만의 솔루션을 생각하면서 <br />
+                          문제해결력 증진
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide swiper-slide02">
+                      <div class="kit kit--02">
+                        <div class="kit-img">
+                          <img src="resources/img/lhl_section_05_kit_02.png" alt="" />
+                        </div>
+                        <h4>상상근육이 자라요! <b>이야기놀이 Kit </b></h4>
+                        <p>
+                          동화의 스토리를 상상하고, 직접 스토리를 만들어보면서
+                          논리적 사고력, 상상력, 공감능력 증진
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide swiper-slide03">
+                      <div class="kit kit--03">
+                        <div class="kit-img">
+                          <img src="resources/img/lhl_section_05_kit_03.png" alt="" />
+                        </div>
+                        <h4>나는야 창의대장! <b>호기심놀이 D.I.Y Kit </b></h4>
+                        <p>
+                          엄마와 함께 상상한 것을 <br />
+                          직접 손으로 만들어보면서 창의력 촉진
+                        </p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide swiper-slide04">
+                      <div class="kit kit--04">
+                        <div class="kit-img">
+                          <img src="resources/img/lhl_section_05_kit_04.png" alt="" />
+                        </div>
+                        <span class="noti">(4주에 1번 제공)</span>
+                        <h4>설렘 가득한 장난감! <b>설렘 TOY</b></h4>
+                        <p>
+                          애니메이션의 다양한 아이템을 <br />
+                          현실 속에서 만나면서 생동감과 흥미 유발
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p>
+                  새로운 도전 과제를 직접 손으로 만들며 경험하는
+                  <strong>창의적 메이커 활동</strong>
+                </p>
+              </section>
+
+              <section class="lhl_section06">
+                <h3>
+                  디지털 학습에 최적화된 <span>리틀홈런 전용 학습기</span>
+                </h3>
+                <img src="resources/img/lhl_section_06.png" alt="리틀홈런 전용 학습기" />
+                <p>
+                  정기구독 신청 시 첫 배송 시점에 <br />
+                  <strong>학습기와 전용 케이스</strong>가 설렘 Kit와 함께
+                  배송됩니다.
+                </p>
+              </section>
+              <section class="lhl_section07">
+                <div class="lhl_section07_content">
+                  <p class="en">We Give Kids Different!</p>
+                  <h3>
+                    <span class="light">시작부터 다른 우리 아이 </span>리틀홈런과 함께 자랍니다.
+                  </h3>
+                </div>
+
+                <img src="resources/img/lhl_section_07_2.png"
+                  alt="유아 - 우리아이 시작부터 다르게! 리틀홈런 , 초등 - No.1 초등자존감 아이스크림 홈런 , 중등 - " />
+              </section>
+              <section class="lhl_section08">
+                <strong>유아의 첫 학습은 리틀홈런으로! <br />
+                  완성은 아이스크림 홈런으로!</strong>
+                <p>우리 아이 성장 포트폴리오를 제시합니다.</p>
+              </section>
+            </div>
+          </div>
+
+          <!--예비초등 기존-->
+          <div class="swiper-slide slide_03 swiper-slide-active">
+            <script>
+              $(document).ready(function () {
+                var kids_section_03_swiper = new Swiper(
+                  ".kids_section_03_swiper", {
+                    direction: "horizontal",
+                    slidesPerView: 1.1,
+                    autoHeight: true,
+                    spaceBetween: 10,
+                  }
+                );
+
+                var kids_section_05_swiper = new Swiper(
+                  ".kids_section_05_swiper", {
+                    direction: "horizontal",
+                    autoHeight: true,
+                    slidesPerView: 1.1,
+                    spaceBetween: 10,
+                  }
+                );
+              });
+
+              function changeTab(tab) {
+                if (tab === 1) {
+                  $("#tab-kor").show();
+                  $("#tab-math").hide();
+                  $("#tab-kor-btn").addClass("active");
+                  $("#tab-math-btn").removeClass("active");
+                }
+                if (tab === 2) {
+                  $("#tab-kor").hide();
+                  $("#tab-math").show();
+                  $("#tab-kor-btn").removeClass("active");
+                  $("#tab-math-btn").addClass("active");
+                  new Swiper(".kids_section_03_swiper_mm", {
+                    direction: "horizontal",
+                    slidesPerView: 1.1,
+                    spaceBetween: 10,
+                  });
+                }
+              }
+            </script>
+            <div class="kids_main">
+              <div class="visual">
+                <img src="resources/img/kids_visual.jpg" />
+              </div>
+              <section class="kid_section01">
+                <img src="resources/img/kids_section_01.jpg" />
+              </section>
+              <section class="kid_section02">
+                <img src="resources/img/kids_section_02.jpg" />
+              </section>
+              <section class="kid_section03">
+                <img src="resources/img/kids_section_03.jpg" />
+                <!-- 탭 -->
+                <div class="tabst01">
+                  <ul>
+                    <li>
+                      <a href="javascript:changeTab(1);" id="tab-kor-btn" class="active">국어누리</a>
+                    </li>
+                    <li>
+                      <a href="javascript:changeTab(2);" id="tab-math-btn">수학누리</a>
+                    </li>
+                  </ul>
+                </div>
+                <!--//탭-->
+                <!--국어누리-->
+                <div style="display: ;" id="tab-kor">
+                  <p style="margin-top: 45px;">
+                    <img src="resources/img/kids_section_03_krtxt.jpg" alt="국어누리 설명" />
+                  </p>
+                  <div
+                    class="swiper-container kids_section_03_swiper swiper-container-horizontal swiper-container-android">
+                    <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                      <div class="swiper-slide swiper-slide-active" style="width: 544.545px; margin-right: 10px;">
+                        <img src="resources/img/kids_section_03_kr01.png" />
+                      </div>
+                      <div class="swiper-slide swiper-slide-next" style="width: 544.545px; margin-right: 10px;">
+                        <img src="resources/img/kids_section_03_kr02.png" />
+                      </div>
+                      <div class="swiper-slide" style="width: 544.545px; margin-right: 10px;">
+                        <img src="resources/img/kids_section_03_kr03.png" />
+                      </div>
+                    </div>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                  </div>
+                </div>
+                <!--//국어누리-->
+                <!--수학누리-->
+                <div style="display: none;" id="tab-math">
+                  <p style="margin-top: 45px;">
+                    <img src="resources/img/kids_section_03_mmtxt.jpg" alt="수학누리 설명" />
+                  </p>
+                  <div class="swiper-container kids_section_03_swiper_mm">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <img src="resources/img/kids_section_03_mm01.png" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="resources/img/kids_section_03_mm02.png" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="resources/img/kids_section_03_mm03.png" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--//수학누리-->
+              </section>
+              ...........................................................................................................................................................................
+              <section class="kid_section04">
+                <img src="resources/img/kids_section_04.jpg" />
+              </section>
+              <section class="kid_section05">
+                <img src="resources/img/kids_section_05.jpg" />
+                <div
+                  class="swiper-container kids_section_05_swiper swiper-container-horizontal swiper-container-android">
+                  <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                    <div class="swiper-slide swiper-slide-active" style="width: 544.545px; margin-right: 10px;">
+                      <img src="resources/img/kids_section_05_01.png" />
+                    </div>
+                    <div class="swiper-slide swiper-slide-next" style="width: 544.545px; margin-right: 10px;">
+                      <img src="resources/img/kids_section_05_02.png" />
+                    </div>
+                    <div class="swiper-slide" style="width: 544.545px; margin-right: 10px;">
+                      <img src="resources/img/kids_section_05_03.png" />
+                    </div>
+                    <div class="swiper-slide" style="width: 544.545px; margin-right: 10px;">
+                      <img src="resources/img/kids_section_05_04.png" />
+                    </div>
+                    <div class="swiper-slide" style="width: 544.545px; margin-right: 10px;">
+                      <img src="resources/img/kids_section_05_05.png" />
+                    </div>
+                    <div class="swiper-slide" style="width: 544.545px; margin-right: 10px;">
+                      <img src="resources/img/kids_section_05_06.png" />
+                    </div>
+                    <div class="swiper-slide" style="width: 544.545px; margin-right: 10px;">
+                      <img src="resources/img/kids_section_05_07.png" />
+                    </div>
+                    <div class="swiper-slide" style="width: 544.545px; margin-right: 10px;">
+                      <img src="resources/img/kids_section_05_08.png" />
+                    </div>
+                    <div class="swiper-slide" style="width: 544.545px; margin-right: 10px;">
+                      <img src="resources/img/kids_section_05_09.png" />
+                    </div>
+                    <div class="swiper-slide" style="width: 544.545px; margin-right: 10px;">
+                      <img src="resources/img/kids_section_05_10.png" />
+                    </div>
+                  </div>
+                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+              </section>
+
+              <section class="kid_section06">
+                <img src="resources/img/kids_section_06.jpg" />
+              </section>
+            </div>
+
+            <style>
+              /* 메인(예비초등) */
+              #wraper .mainArea .kids_main img {
+                display: block;
+                max-width: 100%;
+              }
+
+              #wraper .mainArea .kids_main {
+                z-index: 99;
+              }
+
+              #wraper .mainArea .kids_main .kid_section03 {
+                width: 100%;
+                background-color: #f2f6f7;
+                box-sizing: border-box;
+              }
+
+              #wraper .mainArea .kids_main .kids_section_03_swiper {
+                position: relative;
+                width: 100%;
+                padding: 50px 20px 50px 20px;
+                box-sizing: border-box;
+              }
+
+              #wraper .mainArea .kids_main .kids_section_03_swiper .swiper-slide {
+                position: relative;
+              }
+
+              #wraper .mainArea .kids_main .kids_section_03_swiper_mm {
+                position: relative;
+                width: 100%;
+                padding: 50px 20px 50px 20px;
+                box-sizing: border-box;
+              }
+
+              #wraper .mainArea .kids_main .kids_section_03_swiper_mm .swiper-slide {
+                position: relative;
+              }
+
+              #wraper .mainArea .kids_main .kid_section05 {
+                width: 100%;
+                background-color: #f2f6f7;
+                box-sizing: border-box;
+              }
+
+              #wraper .mainArea .kids_main .kids_section_05_swiper {
+                position: relative;
+                width: 100%;
+                padding: 50px 20px 50px 20px;
+                box-sizing: border-box;
+              }
+
+              #wraper .mainArea .kids_main .kids_section_05_swiper .swiper-slide {
+                position: relative;
+              }
+
+              #wraper .mainArea .kids_main .kids_section_05_swiper_mm {
+                position: relative;
+                width: 100%;
+                padding: 50px 20px 50px 20px;
+                box-sizing: border-box;
+              }
+
+              #wraper .mainArea .kids_main .kids_section_05_swiper_mm .swiper-slide {
+                position: relative;
+              }
+
+              .tabst01 {
+                width: 95%;
+                margin: 0 auto;
+                text-align: center;
+              }
+
+              .tabst01 ul {
+                width: 100%;
+              }
+
+              .tabst01 ul li {
+                width: 40%;
+                margin-left: 2%;
+                display: inline-block;
+              }
+
+              .tabst01 ul li :first-child {
+                margin-left: 0;
+              }
+
+              .tabst01 ul li a {
+                display: block;
+                color: #738083;
+                border: 1px solid #bfcacd;
+                background: #fff;
+                padding: 13px 0;
+              }
+
+              .tabst01 ul li a.active {
+                color: #ffa820;
+                background: #ffa820;
+                border: 1px #ffa820 solid;
+                color: #fff;
+              }
+            </style>
+          </div>
+        </div>
+      </div>
+
+      <div id="bottom_banner" class="bottom_banner">
+        <h3>
+          시작부터 다른 우리 아이, <span> 리틀홈런과 함께 자랍니다.</span>
+        </h3>
+
+        <div class="swiper-container lhl-products-slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-product">
+              <h4 class="prd-name">
+                <i class="weeks">52주 </i>구독 신청
+                <span class="included">(학습기 포함)</span>
+              </h4>
+              <div class="price-wrap">
+                <p class="period"><i>월</i>(4주)</p>
+                <p class="price">
+                  <i class="original-price">99,000원</i>79,000원
+                </p>
+              </div>
+              <a href="#" class="btn-purchase"><span>신청하기</span></a>
+            </div>
+
+            <div class="swiper-slide swiper-product">
+              <h4 class="prd-name">
+                <i class="weeks">12주 </i>구독 신청
+                <span class="included">(학습기 포함)</span>
+              </h4>
+              <div class="price-wrap">
+                <p class="period"><i>월</i>(4주)</p>
+                <p class="price">159,000원</p>
+              </div>
+              <a href="#" class="btn-purchase"><span>신청하기</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="apply-free">
+          <a href="#">
+            <p><b>체험</b>부터 시작해 볼까요?</p>
+          </a>
+        </div>
+        <a href="javascript:;" class="xBtn"><img src="resources/img/icon_xBtn_w.png" alt="닫기" /></a>
+      </div>
+
+      <div class="sticky sticky--lhl">
+        <a href="#" class="sticky--exp"><span><i>체험</i>으로 먼저 경험</span></a>
+        <a href="#" class="sticky--subs"><span><i>정기구독</i> 바로 신청</span></a>
+      </div>
+
+      <div class="sticky sticky--elementary">
+        <a href="#" class="sticky--ele"><span>리틀홈런 예비초등 <i>무료체험</i> 신청하기</span></a>
+      </div>
+    </div>
+
+    <div id="tinfogo_sub02" class="popup_page" style="display: none;">
+      <div class="popup_header">
+        <div class="title">창의력 애니메이션 틴포</div>
+        <a href="javascript:;" class="xBtn"><img src="resources/img/btn_close.svg" /></a>
+      </div>
+      <div class="popup_main" style="
+            height: calc(100vh - 49px);
+            background-color: #e1e8d9;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+          ">
+        <img src="resources/img/tinfogo_sub02_new.png" class="tinfogo_sub_img" style="margin-bottom: 6vw;" />
+
+        <div class="swiper-container tinfo_sub02_slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="resources/img/tinfogo_sub02_new_01.png" alt="“발상은 즐겁다!”" />
+            </div>
+            <div class="swiper-slide">
+              <img src="resources/img/tinfogo_sub02_new_02.png" alt="“Not to give up”" />
+            </div>
+            <div class="swiper-slide">
+              <img src="resources/img/tinfogo_sub02_new_03.png" alt="“Trial & Error”" />
+            </div>
+            <div class="swiper-slide">
+              <img src="resources/img/tinfogo_sub02_new_04.png" alt="“협업/공감/소통”" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

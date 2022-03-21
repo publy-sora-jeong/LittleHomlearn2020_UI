@@ -1,0 +1,7 @@
+#mypage .totalBox .right .btn {
+	margin-right: 0
+}
+
+#mypage .totalBox .right .btn:before {
+	display: none
+}

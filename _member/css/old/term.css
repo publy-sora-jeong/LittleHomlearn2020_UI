@@ -1,0 +1,122 @@
+header {
+  top: 0;
+}
+
+.header-top {
+  background: #fff;
+}
+
+.terms {
+  padding: 70px 0;
+  background: #f6f6f6;
+  width: 100%;
+  letter-spacing: -1px;
+  font-weight: 300;
+}
+
+.terms h2,
+.terms h3,
+.terms h4,
+.terms h5 {
+  margin: 0;
+  padding: 0;
+}
+
+.terms .terms-container {
+  width: 1060px;
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid #e1e1e1;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 38px 50px 50px 50px;
+  text-align: left;
+}
+
+.terms .logo {
+  margin-bottom: 30px;
+  line-height: 1;
+}
+
+.terms p {
+  line-height: 24px;
+}
+
+.terms h3 {
+  font-size: 36px;
+  font-weight: 700;
+  padding-bottom: 14px;
+  position: relative;
+  margin-bottom: 27px;
+}
+
+.terms h3::after {
+  content: '';
+  width: 100%;
+  height: 5px;
+  background: url("../img/line_dash.png") repeat-x;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.terms h4 {
+  margin-top: 40px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.terms h4.title-chapter {
+  font-size: 26px;
+}
+
+.terms .term-index {
+  margin-top: 25px;
+}
+
+.terms .tb-term {
+  margin: 10px 0;
+}
+
+.terms .tb-term table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  color: #333;
+}
+
+.terms .tb-term table th,
+.terms .tb-term table td {
+  border: 1px solid #e1e1e1;
+  padding: 12px 20px;
+}
+
+.terms .tb-term table th {
+  background: #f3f3f3;
+  text-align: center;
+}
+
+.terms .tb-term table td {
+  font-weight: 300;
+}
+
+.terms .tb-term table td.ac {
+  text-align: center;
+}
+
+.terms .li-dash li {
+  padding-left: 10px;
+  position: relative;
+  line-height: 24px;
+}
+
+.terms .li-dash li::before {
+  content: '';
+  width: 4px;
+  height: 1px;
+  background: #333;
+  position: absolute;
+  top: 11px;
+  left: 0px;
+}
+/*# sourceMappingURL=term.css.map */

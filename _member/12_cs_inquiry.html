@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>리틀홈런</title>
+  <meta name="description"
+    content="아이스크림, 아이스크림 홈런을 탄생시킨 대한민국 No.1 에듀테크그룹에서 만든 5~7세 아이들을 위한 맞춤 놀이 교육 프로그램입니다. 글로벌 미래 인재로의 첫 출발 리틀홈런과 함께하세요" />
+  <meta name="Keywords" content="리틀홈런, 아이스크림, 아이스크림홈런, 창의사고력, 창의적사고력, 학교준비, 5세, 6세, 7세, 
+창의력문제해결프로그램, 창의력문제해결사, 틴포고, 틴포GO, 우리아이미래준비, 놀이교육, homelearn, littlehomelearn, 설렘키트" />
+  <meta content="아이들을 위한 맞춤 놀이 교육 프로그램 리틀홈런" property="og:title" />
+  <meta property="og:image" content="썸네일 이미지 경로" />
+  <meta content="https://www.ㅁㅁㅁ.com/" property="og:url" />
+  <meta
+    content="아이스크림, 아이스크림 홈런을 탄생시킨 대한민국 No.1 에듀테크그룹에서 만든 5~7세 아이들을 위한 맞춤 놀이 교육 프로그램입니다. 글로벌 미래 인재로의 첫 출발 리틀홈런과 함께하세요"
+    property="og:description" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+  <script src="js/swiper.min.js"></script>
+  <link rel="stylesheet" href="css/swiper.min.css" />
+  <link rel="stylesheet" href="css/style_new.css" />
+  <link rel="stylesheet" href="css/style_cs.css" />
+</head>
+
+<body id="wrap">
+  <header>
+    <div class="header-top">
+      <ul>
+        <li><a class="col-black" href="#">리틀홈런 Home</a></li>
+        <li><a class="col-blue" href="#">회원가입</a></li>
+        <li><a href="#">이벤트</a></li>
+        <li><a href="#">고객센터</a></li>
+      </ul>
+    </div>
+    <div class="GNB">
+      <div class="top_logo">
+        <a href="/"><img src="https://www.littlehome-learn.com/resources/img_pc/logo.png" alt="리틀홈런 로고" /></a>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="javascript:setPage('#lhl')" id="lhl_btn" class="gnb_btn active">리틀홈런</a>
+          </li>
+          <li>
+            <a href="javascript:setPage('#kids')" id="kids_btn" class="gnb_btn">리틀홈런 for 예비초등</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="sec">
+    <div class="visual visual--cs">
+      <div class="typo">
+        <h3>리틀홈런 <span>고객센터</span></h3>
+        <p>리틀홈런은 고객님의 만족을 위해 최선을 다하겠습니다.</p>
+      </div>
+    </div>
+
+    <div class="event">
+      <ul class="board-tab tab-type3">
+        <li class=""><a href="#">공지사항</a></li>
+        <li class=""><a href="#">자주 묻는 질문</a></li>
+        <li class="active"><a href="#">1:1 문의</a></li>
+      </ul>
+
+      <div class="board-status">
+        <p>리틀홈런에 궁금하신 점이 있으시면 문의를 남겨주세요. 빠른 시일내에 답변 드리도록 하겠습니다.</p>
+      </div>
+
+      <div class="form-wrapper inquiry">
+        <form action="">
+          <div class="inquiry-form ">
+
+            <div class="inputBox selectBox">
+              <select id="subs_option">
+                <option value="">문의유형 선택 </option>
+                <option value="">결제</option>
+                <option value="">배송</option>
+              </select>
+            </div>
+            <div class="inputBox textarea">
+              <textarea name="inquiry_text" id="" cols="30" rows="10"
+                placeholder="문의할 내용을 입력하세요.">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, explicabo, praesentium repellat facere voluptates omnis atque dolores, fugiat dolore sit repudiandae temporibus officiis modi molestias laboriosam illo qui alias eaque? </textarea>
+            </div>
+
+            <div class="file-attach">
+              <button><span>파일첨부</span></button>
+              <div class="file-list">
+                <p><span class="file-name">이미지_첨부파일.jpg </span><a href="#" class="btn-del"><span
+                      class="blind">삭제</span></a></p>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="col-tit">답변 받을 연락처</div>
+              <div class="inputBox chbox-inline">
+                <label class="chbox" for="a_sms">SMS
+                  <input type="checkbox" id="a_sms">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="chbox" for="a_mail">이메일
+                  <input type="checkbox" id="a_mail">
+                  <span class="checkmark"></span>
+                </label>
+                <span class="help">(문의에 대한 답변은 마이페이지 > 문의내역을 통해서 확인이 가능합니다.)</span>
+              </div>
+            </div>
+
+
+            <!--답변받을 연락처  SMS선택시 노출 -->
+            <div class="inputBox inputText">
+              <input type="number" id="phone" placeholder="휴대전화번호 ( ‘-’ 제외 숫자만입력)">
+            </div>
+
+
+            <!--답변받을 연락처  이메일선택시 노출 -->
+            <div class="inputEmail">
+              <div class="inputBox"><input type="text" id="emailFirst" placeholder="메일주소 (앞)"></div>
+              <span>@</span>
+              <div class="inputBox"><input type="text" id="emailLast" placeholder="메일주소 (뒤)"></div>
+              <div class="inputBox inputAddress">
+                <div class="selectBox">
+                  <select id="emailSecondSelect">
+                    <option value="">직접입력</option>
+                    <option value="naver.com">naver.com</option>
+                    <option value="gmail.com">gmail.com</option>
+                    <option value="hanmail.net">hanmail.net</option>
+                    <option value="daum.net">daum.net</option>
+                    <option value="kakao.com">kakao.com</option>
+                    <option value="nate.com">nate.com</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!--비회원 문의시 노출-->
+            <div class="term-wrap ">
+              <label class="chbox" for="agree_term1"><strong>개인정보의 수집 및 이용목적, 이용기간</strong>에 동의합니다. <span
+                  class="col-orange">(필수)</span>
+                <input type="checkbox" id="agree_term1">
+                <span class="checkmark"></span>
+              </label>
+              <div class="termBox">
+                <p>회사는 상담 문의자에 대하여 아래와 같은 개인정보를 수집하고 있습니다. <br>
+                  수집항목 : 이름, 이메일, 휴대전화번호<br>
+                  개인정보 수집방법 : 홈페이지<br>
+                  개인정보의 수집 및 이용목적<br>
+                  회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.<br>
+                  1:1문의 답변<br>
+
+                  개인정보의 보유 및 이용기간<br>
+                  회사는 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다.</p>
+              </div>
+            </div>
+
+
+          </div>
+
+        </form>
+
+      </div>
+      <p class="mt-30">
+        <a href="#" class="btn-confirm"><span>확인</span></a>
+      </p>
+    </div>
+
+  </section>
+  <footer>
+    <article class="con_area address">
+      <ul class="policy">
+        <li><a href="#">회사소개</a></li>
+        <li><a href="#">이용약관</a></li>
+        <li><a href="#">개인정보처리방침</a></li>
+      </ul>
+      주) 피디엠 l 대표이사 : 박대민 l 사업자등록번호 : 543-81-00753 <br />
+      주소 : 경기도 성남시 분당구 대왕판교로 660(삼평동) l 통신판매업신고번호
+      : 제 2017-성남분당-0668 호 <br />
+      고객센터 : 1544-0690 (평일 10:00~19:00 주말/공휴일 휴무)
+      <p class="copyrights">
+        Copyright ⓒ PDM Inc. All Rights Reserved
+      </p>
+    </article>
+  </footer>
+</body>
+
+</html>
